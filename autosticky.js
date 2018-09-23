@@ -28,11 +28,13 @@
             autoSticky.exScrollTop;
             var direct = scrollTop > autoSticky.exScrollTop;
             var ctr = utils.ctr(autoSticky.idx);
+            // console.log(direct, scrollTop + ctr.marginTop , ctr.top);
             if((scrollTop + ctr.marginTop > ctr.top) && direct) {
                 (autoSticky.elemList.length - 1 > autoSticky.idx) && (utils.actSticky(ctr, direct), autoSticky.idx++);
             };
             if((scrollTop + ctr.marginTop < ctr.top) && !direct) {
-                (autoSticky.idx > 0) && (utils.actSticky(ctr, direct), autoSticky.idx--);
+                (autoSticky.idx >= 0) && (utils.actSticky(ctr, direct), autoSticky.idx--);
+                (autoSticky.idx === -1) && (autoSticky.idx = 0);
             };
             autoSticky.exScrollTop = scrollTop;
         };
