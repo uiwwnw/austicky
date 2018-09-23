@@ -1,7 +1,7 @@
 ;(function() {
     var root = this;
     var auSticky = {};
-    auSticky.exScrollTop = 0;
+    auSticky.exScrollTop;
     auSticky.opt;
     var utils = (function() {
         var addEvnt = function(el, m, fn){
@@ -10,32 +10,42 @@
         var removeEvnt = function(el, m, fn){
             el.removeEventListener(m, fn);
         };
-        var actSticky = function(ctr, direct) {
-            var body = document.querySelector('body');
-            if (direct) {
-                var _clone = body.appendChild(ctr.clone);
-                _clone.setAttribute('data-asticky', auSticky.idx);
-                _clone.classList.add(auSticky.opt.activeClassName);
-                ctr.el.setAttribute('data-margintop', ctr.marginTop);
-                _clone.setAttribute('style', 'margin-top:' + ctr.marginTop + 'px;');
-            } else {
-                var _clone = document.querySelector('[data-asticky="'+ Number(auSticky.idx)+'"]');
-                (_clone !== null) && (body.removeChild(_clone));
-            }
+        var actSticky = function(scrollTop, direct, i) {
+            var _actSticky = function() {
+                var body = document.querySelector('body');
+                if (direct) {
+                    var _clone = body.appendChild(ctr.clone);
+                    _clone.setAttribute('data-asticky', auSticky.idx);
+                    _clone.classList.add(auSticky.opt.activeClassName);
+                    ctr.el.setAttribute('data-margintop', ctr.marginTop);
+                    _clone.setAttribute('style', 'margin-top:' + ctr.marginTop + 'px;');
+                } else {
+                    var _clone = document.querySelector('[data-asticky="'+ Number(auSticky.idx)+'"]');
+                    ctr.el.removeAttribute('data-margintop');
+                    (_clone !== null) && (body.removeChild(_clone));
+                }
+            };
+            auSticky.idx = i === undefined ? auSticky.idx:i;
+            var ctr = utils.ctr(auSticky.idx);
+            if((scrollTop + ctr.marginTop >= ctr.top) && direct) {
+                (auSticky.elemList.length - 1 > auSticky.idx) && (_actSticky(), auSticky.idx++);
+            };
+            if((scrollTop + ctr.marginTop <= ctr.top) && !direct) {
+                (auSticky.idx >= 0) && (_actSticky(), auSticky.idx--);
+                (auSticky.idx === -1) && (auSticky.idx = 0);
+            };
         };
         var scroll = function(){
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             auSticky.exScrollTop;
             var direct = scrollTop > auSticky.exScrollTop;
-            var ctr = utils.ctr(auSticky.idx);
-            // console.log(direct, scrollTop + ctr.marginTop , ctr.top);
-            if((scrollTop + ctr.marginTop > ctr.top) && direct) {
-                (auSticky.elemList.length - 1 > auSticky.idx) && (utils.actSticky(ctr, direct), auSticky.idx++);
+            if((auSticky.exScrollTop === undefined) && (scrollTop > 5)) {
+                direct = true;
+                for(var i = 0; i < auSticky.elemList.length;i++) {
+                    utils.actSticky(scrollTop, direct, i);
+                }
             };
-            if((scrollTop + ctr.marginTop < ctr.top) && !direct) {
-                (auSticky.idx >= 0) && (utils.actSticky(ctr, direct), auSticky.idx--);
-                (auSticky.idx === -1) && (auSticky.idx = 0);
-            };
+            utils.actSticky(scrollTop, direct);
             auSticky.exScrollTop = scrollTop;
         };
         var ctr = function(i) {
