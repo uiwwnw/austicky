@@ -1,8 +1,8 @@
 ;(function() {
     var root = this;
-    var autoSticky = {};
-    autoSticky.exScrollTop = 0;
-    autoSticky.opt;
+    var auSticky = {};
+    auSticky.exScrollTop = 0;
+    auSticky.opt;
     var utils = (function() {
         var addEvnt = function(el, m, fn){
             el.addEventListener(m, fn);
@@ -14,36 +14,36 @@
             var body = document.querySelector('body');
             if (direct) {
                 var _clone = body.appendChild(ctr.clone);
-                _clone.setAttribute('data-asticky', autoSticky.idx);
-                _clone.classList.add(autoSticky.opt.activeClassName);
+                _clone.setAttribute('data-asticky', auSticky.idx);
+                _clone.classList.add(auSticky.opt.activeClassName);
                 ctr.el.setAttribute('data-margintop', ctr.marginTop);
                 _clone.setAttribute('style', 'margin-top:' + ctr.marginTop + 'px;');
             } else {
-                var _clone = document.querySelector('[data-asticky="'+ Number(autoSticky.idx)+'"]');
+                var _clone = document.querySelector('[data-asticky="'+ Number(auSticky.idx)+'"]');
                 (_clone !== null) && (body.removeChild(_clone));
             }
         };
         var scroll = function(){
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            autoSticky.exScrollTop;
-            var direct = scrollTop > autoSticky.exScrollTop;
-            var ctr = utils.ctr(autoSticky.idx);
+            auSticky.exScrollTop;
+            var direct = scrollTop > auSticky.exScrollTop;
+            var ctr = utils.ctr(auSticky.idx);
             // console.log(direct, scrollTop + ctr.marginTop , ctr.top);
             if((scrollTop + ctr.marginTop > ctr.top) && direct) {
-                (autoSticky.elemList.length - 1 > autoSticky.idx) && (utils.actSticky(ctr, direct), autoSticky.idx++);
+                (auSticky.elemList.length - 1 > auSticky.idx) && (utils.actSticky(ctr, direct), auSticky.idx++);
             };
             if((scrollTop + ctr.marginTop < ctr.top) && !direct) {
-                (autoSticky.idx >= 0) && (utils.actSticky(ctr, direct), autoSticky.idx--);
-                (autoSticky.idx === -1) && (autoSticky.idx = 0);
+                (auSticky.idx >= 0) && (utils.actSticky(ctr, direct), auSticky.idx--);
+                (auSticky.idx === -1) && (auSticky.idx = 0);
             };
-            autoSticky.exScrollTop = scrollTop;
+            auSticky.exScrollTop = scrollTop;
         };
         var ctr = function(i) {
             var ctr = {
-                el: autoSticky.elemList[i],
-                top: autoSticky.elemList[i].offsetTop,
-                marginTop: autoSticky.elemList[i - 1] === undefined?0:Number(autoSticky.elemList[i - 1].getAttribute('data-margintop')) + Number(autoSticky.elemList[i - 1].offsetHeight),
-                clone: autoSticky.elemList[i].cloneNode(true),
+                el: auSticky.elemList[i],
+                top: auSticky.elemList[i].offsetTop,
+                marginTop: auSticky.elemList[i - 1] === undefined?0:Number(auSticky.elemList[i - 1].getAttribute('data-margintop')) + Number(auSticky.elemList[i - 1].offsetHeight),
+                clone: auSticky.elemList[i].cloneNode(true),
             };
             return ctr;
         };
@@ -55,16 +55,16 @@
             return opt;
         };
         var initElem = function(e) {
-            autoSticky.elemNode = e;
-            autoSticky.elemList = document.querySelectorAll(autoSticky.elemNode).length === 0?false:document.querySelectorAll(autoSticky.elemNode);
+            auSticky.elemNode = e;
+            auSticky.elemList = document.querySelectorAll(auSticky.elemNode).length === 0?false:document.querySelectorAll(auSticky.elemNode);
         };
         var addElem = function(e) {
-            autoSticky.elemNode = autoSticky.elemNode + ', ' + e;
-            autoSticky.elemList = document.querySelectorAll(autoSticky.elemNode).length === 0?false:document.querySelectorAll(autoSticky.elemNode);
+            auSticky.elemNode = auSticky.elemNode + ', ' + e;
+            auSticky.elemList = document.querySelectorAll(auSticky.elemNode).length === 0?false:document.querySelectorAll(auSticky.elemNode);
         };
         var removeElem = function(e) {
-            autoSticky.elemNode = autoSticky.elemNode.replace(e, '');
-            autoSticky.elemList = document.querySelectorAll(autoSticky.elemNode).length === 0?false:document.querySelectorAll(autoSticky.elemNode);
+            auSticky.elemNode = auSticky.elemNode.replace(e, '');
+            auSticky.elemList = document.querySelectorAll(auSticky.elemNode).length === 0?false:document.querySelectorAll(auSticky.elemNode);
         };
         return {
             initElem: initElem,
@@ -78,9 +78,9 @@
             actSticky: actSticky
         }
     }());
-    var AutoSticky = function(e, opt) {
-        autoSticky.idx = 0;
-        autoSticky.opt = utils.opt(opt);
+    var AuSticky = function(e, opt) {
+        auSticky.idx = 0;
+        auSticky.opt = utils.opt(opt);
         utils.initElem(e);
         utils.addEvnt(window, 'scroll', utils.scroll);
         return {
@@ -88,5 +88,5 @@
         };
     };
     
-    root.autoSticky = AutoSticky;
+    root.auSticky = AuSticky;
 }());

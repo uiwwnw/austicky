@@ -4,18 +4,18 @@
 
 ## 설명
 
-오토스티키
+오우스티키
 
 
 ## How to use
 
 ```javascript
 
-var a = new autoSticky('header');
+var a = new auSticky('header');
 a.addElem('nav');
 a.addElem('.ac');
 
-// var a = new autoSticky('header, nav, .ac');
+// var a = new auSticky('header, nav, .ac');
 
 ```
 ## AUTHOR
