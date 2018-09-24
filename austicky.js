@@ -14,11 +14,13 @@
             var _actSticky = function() {
                 var body = document.querySelector('body');
                 if (direct) {
-                    var _clone = body.appendChild(ctr.clone);
-                    _clone.setAttribute('data-asticky', auSticky.idx);
-                    _clone.classList.add(auSticky.opt.activeClassName);
-                    ctr.el.setAttribute('data-margintop', ctr.marginTop);
-                    _clone.setAttribute('style', 'margin-top:' + ctr.marginTop + 'px;');
+                    if(document.querySelector('[data-asticky="'+ Number(auSticky.idx)+'"]') === null) {
+                        var _clone = body.appendChild(ctr.clone);
+                        _clone.setAttribute('data-asticky', auSticky.idx);
+                        _clone.classList.add(auSticky.opt.activeClassName);
+                        ctr.el.setAttribute('data-margintop', ctr.marginTop);
+                        _clone.setAttribute('style', 'margin-top:' + ctr.marginTop + 'px;');
+                    }
                 } else {
                     var _clone = document.querySelector('[data-asticky="'+ Number(auSticky.idx)+'"]');
                     ctr.el.removeAttribute('data-margintop');
@@ -27,8 +29,9 @@
             };
             auSticky.idx = i === undefined ? auSticky.idx:i;
             var ctr = utils.ctr(auSticky.idx);
-            if((scrollTop + ctr.marginTop >= ctr.top) && direct) {
-                (auSticky.elemList.length - 1 > auSticky.idx) && (_actSticky(), auSticky.idx++);
+            if((scrollTop + ctr.marginTop > ctr.top) && direct) {
+                (auSticky.elemList.length > auSticky.idx) && (_actSticky(), auSticky.idx++);
+                (auSticky.idx === auSticky.elemList.length) && (auSticky.idx = auSticky.elemList.length - 1);
             };
             if((scrollTop + ctr.marginTop <= ctr.top) && !direct) {
                 (auSticky.idx >= 0) && (_actSticky(), auSticky.idx--);

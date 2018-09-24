@@ -6,33 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./austicky.js"></script>
     <style>
+        body {
+            margin: 0;
+        }
+
         .sticky {
             position: fixed;
             top: 0;
             right: 0;
             left: 0;
         }
+
         header {
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            text-align: center;
             color: #fff;
             background: #000;
         }
 
+        .gnbMenu ul {
+            display: table;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-bottom: 1px solid #000;
+            background: #fff;
+        }
+
+        .gnbMenu li {
+            display: table-cell;
+            font-size: 16px;
+            line-height: 30px;
+            text-align: center;
+        }
+
         nav {
-            background: red;
+            width: 100px;
+            border: 1px solid red;
+            background: #eee;
         }
 
     </style>
     <title>auSticky</title>
 </head>
 <body>
-    <header class="a">헤더헤더</header>
+    <header>헤더헤더</header>
     <div class="container">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, dolore? Reiciendis temporibus porro modi!
+        </p>
         <div class="gnbMenu">
             <ul>
-                <li>a</li>
-                <li>b</li>
-                <li>c</li>
-                <li>d</li>
+                <li>case A</li>
+                <li>case B</li>
+                <li>case C</li>
+                <li>case D</li>
             </ul>
         </div>
         <p>
@@ -45,11 +75,16 @@
             Obcaecati in dicta, blanditiis voluptates tenetur tempore facilis numquam. Quo veritatis similique aperiam porro expedita nemo, pariatur consequatur sint ex hic illum sapiente ullam quas vitae et vero fuga atque.
             Eaque harum dolores libero quisquam consectetur, asperiores doloribus officia omnis commodi dignissimos repudiandae, nemo nesciunt deserunt, vitae eius porro! Perspiciatis labore ad cupiditate aliquid quo. Quaerat eum reiciendis nobis nostrum!
         </p>
-        <nav>헤더헤더</nav>
+        <nav>
+            <ul>
+                <li>case 1</li>
+                <li>case 2</li>
+                <li>case 3</li>
+            </ul>
+        </nav>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus in tempore sed.
         </p>
-        <nav>헤더헤더</nav>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptatum, itaque, quas nulla eos ab ipsa laborum nostrum quis inventore veritatis ullam. Magni, nesciunt sequi doloribus atque exercitationem explicabo ad?
             Rem totam doloremque iste animi dolores sed itaque maiores veniam recusandae enim, sapiente debitis voluptatibus, molestias amet facilis corrupti dignissimos asperiores impedit aut nobis. Deserunt accusamus laboriosam aspernatur reprehenderit molestiae!
@@ -88,8 +123,8 @@
     <script>
         var a = new auSticky('header');
         // var a = new auSticky('header, nav, .ac');
+        a.addElem('.gnbMenu');
         a.addElem('nav');
-        a.addElem('.ac');
         // a.addElem('.ac');
         // a.addElem('.ac');
         // a.addElem('.ac');
