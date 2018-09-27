@@ -48,11 +48,25 @@
             background: #eee;
         }
 
+        .pageBtn {
+            width: 100%;
+            color: #fff;
+            background: red;
+        }
+
+        .bottomType {
+            position: fixed;
+            bottom: 0;
+        }
+
     </style>
     <title>auSticky</title>
 </head>
 <body>
     <header>헤더헤더</header>
+    <footer>
+        <button class="pageBtn">페이지버튼1</button>
+    </footer>
     <div class="container">
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, dolore? Reiciendis temporibus porro modi!
@@ -82,6 +96,16 @@
                 <li>case 3</li>
             </ul>
         </nav>
+        <footer>
+            <button class="pageBtn">페이지버튼2</button>
+        </footer>
+        <nav>
+            <ul>
+                <li>case 1</li>
+                <li>case 2</li>
+                <li>case 3</li>
+            </ul>
+        </nav>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus in tempore sed.
         </p>
@@ -102,7 +126,9 @@
             Blanditiis magnam, consectetur veniam qui dolor nobis quod omnis molestiae sit aperiam, quidem laborum, perspiciatis illum odio dicta. Nihil necessitatibus ducimus repudiandae optio illum rem sint rerum incidunt aperiam provident.
             Culpa atque reprehenderit eius fugit dolor facere totam consectetur fuga at saepe, vitae impedit autem provident ea dolore repudiandae illum libero nisi! Nisi quisquam porro blanditiis vero reiciendis officiis odit.
         </p>
-        <div class="ac"></div>
+        <footer>
+            <button class="pageBtn">페이지버튼3</button>
+        </footer>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi recusandae molestiae itaque adipisci, possimus incidunt consectetur. Eum atque voluptatibus ipsam tenetur cumque illo dicta, ratione, aspernatur doloribus, quam culpa repellat!
             Expedita cum, unde earum, veniam accusantium, eaque omnis magnam nisi excepturi facilis totam sequi sunt dolorem odit libero vero accusamus neque blanditiis? Atque, odit maxime? Voluptas a dignissimos architecto alias.
@@ -117,19 +143,21 @@
         </p>
     </div>
     
-    <footer>
-        <button class="pageBtn">페이지버튼</button>
-    </footer>
     <script>
-        var a = new auSticky('header');
-        // var a = new auSticky('header, nav, .ac');
-        a.addElem('.gnbMenu');
-        a.addElem('nav');
+        var a = new auSticky('.gnbMenu, nav');
+        var b = new auSticky('.pageBtn', {
+            activeClassName: 'bottomType',
+            bottom: true
+        });
+        // a.addElem('.gnbMenu');
+        // var bb = new auSticky('nav');
+        // var c = new auSticky('.gnbMenu');
         // a.addElem('.ac');
         // a.addElem('.ac');
         // a.addElem('.ac');
         // a.addElem('.ac');
-        // console.log(a);
+        // console.log(a.elemList);
+        // console.log(b.elemList);
     </script>
 </body>
 </html>
