@@ -4,7 +4,9 @@
 
 ## 설명
 
-오우스티키
+오우스티키      
+스티키 자동 라이브러리           
+sticky, javascript, auto, page button, fixed button, tab menu
 
 
 ## How to use
