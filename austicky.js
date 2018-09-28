@@ -115,6 +115,9 @@
             scr.exTop = scr.top;
         };
         utils.addEvnt(window, 'scroll', scroll);
+        if(scr.exTop === undefined) {
+            scroll();
+        };
         return {
             elemList: elemList
         }
