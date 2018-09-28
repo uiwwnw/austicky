@@ -106,6 +106,7 @@
         var scroll = function(){
             utils.scroll(scr);
             if(scr.exTop === undefined) {
+                scr.top = 0;
                 scr.direct = true;
                 for(var i = 0; i < elemList.length; i++) {
                     actSticky(scr.top, scr.direct, i);
