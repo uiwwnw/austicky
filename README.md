@@ -1,6 +1,6 @@
 ## demo
 
-[jsbin's demo](https://jsbin.com/weromaqaxe/edit?output)
+[jsbin's demo](https://jsbin.com/weromaqaxe/1)
 
 ## 설명
 
