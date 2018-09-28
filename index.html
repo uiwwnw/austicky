@@ -51,6 +51,7 @@
 
         .pageBtn {
             width: 100%;
+            height: 40px;
             color: #fff;
             background: red;
         }
@@ -66,9 +67,6 @@
 </head>
 <body>
     <header>헤더헤더</header>
-    <footer>
-        <button class="pageBtn">페이지버튼1</button>
-    </footer>
     <div class="container">
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, dolore? Reiciendis temporibus porro modi!
@@ -82,6 +80,16 @@
             </ul>
         </div>
         <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque sed numquam facilis molestiae corporis iure rem fuga, mollitia reprehenderit, dignissimos, doloribus eveniet vitae. Consequuntur quo eaque voluptate, quidem modi mollitia?
+            Est impedit adipisci quis quidem labore, maiores culpa, aut quasi placeat soluta totam, velit odit doloribus aperiam modi! Odio cumque quia repudiandae. Ut modi officia beatae? Quia reiciendis necessitatibus tempore!
+            Optio doloremque incidunt ad maxime magnam sapiente quod ratione soluta adipisci molestias animi debitis enim consequatur itaque molestiae voluptas, alias perferendis distinctio ut maiores accusamus? Enim nobis vitae ratione incidunt.
+            Magni exercitationem facere molestiae perspiciatis nam quam iusto voluptates culpa deleniti cupiditate, ab dolorum repudiandae aliquam animi asperiores minima quisquam neque ut. Neque corporis iure atque, velit nulla ratione perferendis!
+            Nisi, dolorum ut assumenda doloribus a beatae eum suscipit hic nesciunt unde dolor numquam quis quo impedit? Architecto provident soluta recusandae reprehenderit accusamus sed facilis distinctio, sequi culpa optio error?
+        </p>
+        <footer>
+            <button class="pageBtn">페이지버튼1</button>
+        </footer>
+        <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, unde repudiandae. In quos sapiente culpa placeat unde, excepturi molestias inventore aut eum molestiae amet architecto ut eos, debitis officiis nemo.
             Alias neque quibusdam nesciunt officia reiciendis deleniti quo odit nemo veritatis nostrum pariatur cupiditate maiores, fugiat recusandae laudantium aliquam. Suscipit officia mollitia ad, rem modi amet saepe maiores ab repudiandae!
             Ducimus, alias. Sequi quaerat nulla repudiandae facere officiis temporibus, atque laborum excepturi eaque optio perferendis non vitae incidunt, sapiente velit aspernatur corrupti iste rem deleniti quae laboriosam in reprehenderit ipsa.
@@ -91,13 +99,6 @@
             Obcaecati in dicta, blanditiis voluptates tenetur tempore facilis numquam. Quo veritatis similique aperiam porro expedita nemo, pariatur consequatur sint ex hic illum sapiente ullam quas vitae et vero fuga atque.
             Eaque harum dolores libero quisquam consectetur, asperiores doloribus officia omnis commodi dignissimos repudiandae, nemo nesciunt deserunt, vitae eius porro! Perspiciatis labore ad cupiditate aliquid quo. Quaerat eum reiciendis nobis nostrum!
         </p>
-        <nav>
-            <ul>
-                <li>case 1</li>
-                <li>case 2</li>
-                <li>case 3</li>
-            </ul>
-        </nav>
         <footer>
             <button class="pageBtn">페이지버튼2</button>
         </footer>
@@ -146,7 +147,7 @@
     </div>
     
     <script>
-        var a = new auSticky('.gnbMenu, nav');
+        var a = new auSticky('header, .gnbMenu, nav');
         var b = new auSticky('.pageBtn', {
             activeClassName: 'bottomType',
             bottom: true
