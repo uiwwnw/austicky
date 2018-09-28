@@ -14,10 +14,15 @@ sticky, javascript, auto, page button, fixed button, tab menu
 ```javascript
 
 var a = new auSticky('header');
-a.addElem('nav');
-a.addElem('.ac');
 
-// var a = new auSticky('header, nav, .ac');
+// multi
+var a = new auSticky('header, nav, .ac');
+
+// option
+var a = new auSticky('footer', {
+    activeClassName: 'aaa', // edit sticky active class name
+    bottom: true // trun on bottom type 
+});
 
 ```
 ## AUTHOR
